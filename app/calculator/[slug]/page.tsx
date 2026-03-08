@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function CalculatorPage({ params }) {
+export default function CalculatorPage({ params }: { params: { slug: string } }) {
 
   const calculator = calculators.find(
     tool => tool.slug === params.slug
@@ -39,17 +39,14 @@ export default function CalculatorPage({ params }) {
   return (
     <div className="max-w-4xl mx-auto px-4 py-20">
 
-      {/* Title */}
       <h1 className="text-3xl font-bold mb-6">
         {calculator.name}
       </h1>
 
-      {/* Description */}
       <p className="text-gray-600 mb-10">
         {calculator.description}
       </p>
 
-      {/* Calculator Tool */}
       <div className="bg-white border rounded-xl p-8 shadow-sm mb-16">
 
         {CalculatorComponent ? (
@@ -62,7 +59,6 @@ export default function CalculatorPage({ params }) {
 
       </div>
 
-      {/* SEO Content */}
       {calculator.seo && (
         <SEOContent
           title={calculator.name}
@@ -70,16 +66,14 @@ export default function CalculatorPage({ params }) {
         />
       )}
 
-      {/* FAQ Section */}
       {calculator.seo?.faq && (
         <FAQSection faq={calculator.seo.faq} />
       )}
 
-      {/* Related Calculators */}
       <RelatedCalculators
         currentSlug={calculator.slug}
         currentTags={calculator.tags}
-        />
+      />
 
     </div>
   )
