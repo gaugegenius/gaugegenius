@@ -6,7 +6,7 @@ import SEOContent from "@/components/SEOContent"
 import FAQSection from "@/components/FAQSection"
 import RelatedCalculators from "@/components/RelatedCalculators"
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }: { params: { slug: string } }) {
 
   const calculator = calculators.find(
     tool => tool.slug === params.slug
